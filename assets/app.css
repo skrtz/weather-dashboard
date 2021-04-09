@@ -1,0 +1,27 @@
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+section {
+    margin: 50px;
+    margin-left: 0%;
+    width: 60%;
+    height: 550px;
+    background-color: #e1e4e8;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 550px;
+    margin: 50px;
+    background-color: #e1e4e8;
+}
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
