@@ -10,7 +10,28 @@ function getWeather(lat, lon) {
             return response.json()
         })
         .then(function (data){
+            var current = document.getElementById('current');
             console.log(data)
+            for(let i = 0; i < data.daily.length; i++){
+
+                // forcast
+                var createDiv = document.createElement('div');
+                var createTemp = document.createElement('p');
+                var createHumid = document.createElement('p');
+                var createUvi = document.createElement('p')
+
+                // var toFareheit = 9/5(data.daily[i].temp.day - 237);
+                createTemp.textContent = 'Temp: ' + data.daily[i].temp.day;
+                createHumid.textContent = 'Humidity: ' + data.daily[i].humidity + '%';
+                createUvi.textContent = 'UV Index: ' + data.daily[i].uvi;
+
+                current.appendChild(createDiv);
+                createDiv.appendChild(createTemp);
+                createDiv.appendChild(createHumid);
+                createDiv.appendChild(createUvi);
+
+            }
+
         })
 }
 
