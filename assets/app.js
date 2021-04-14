@@ -76,7 +76,7 @@ $('#search-btn').on('click', function(event){
     event.preventDefault();
     searchInput = $('#city').val();
     // get city coordinates
-    var url = 'http://api.openweathermap.org/geo/1.0/direct?q=' + searchInput + '&appid=' + apiKey;
+    var url = 'https://api.openweathermap.org/geo/1.0/direct?q=' + searchInput + '&appid=' + apiKey;
     fetch(url)
     .then(function (response){
         return response.json();
