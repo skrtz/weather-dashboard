@@ -1,4 +1,6 @@
+var cities = [];
 var searchInput;
+var idCounter = 0;
 var apiKey = 'f1a95fc68a0873c27d61c20f9a6dd653';
 var lat;
 var lon;
@@ -42,6 +44,8 @@ function displayWeather(data, searchInput){
                 var currentHumid = document.createElement('p');
                 var currentWind = document.createElement('p');
                 var currentUvi = document.createElement('p');
+                var currentUvIndex = document.createElement('p');
+                var currentUviBox = document.createElement('div');
                 
                 var iconImg = document.createElement('img');
                 iconImg.setAttribute('src', 'http://openweathermap.org/img/wn/' + data.daily[0].weather[0].icon + '@2x.png');
@@ -53,13 +57,32 @@ function displayWeather(data, searchInput){
                 currentTemp.innerHTML = 'Temp: ' + data.daily[0].temp.day;
                 currentHumid.textContent = 'Humidity: ' + data.daily[0].humidity + '%';
                 currentWind.textContent = 'Wind: ' + data.daily[0].wind_speed + ' MPH';
-                currentUvi.textContent = 'UV Index: ' + data.daily[0].uvi;
-                
+                currentUvi.textContent = 'UV Index: ';
+                currentUvIndex.textContent = data.daily[0].uvi;
+
+                if (currentUvIndex.textContent < 3){
+                    currentUvIndex.style.color = 'white';
+                    currentUviBox.style.display = 'inline-block';
+                    currentUviBox.style.backgroundColor = 'green';
+                    currentUviBox.style.borderRadius = '10px';
+                    currentUvIndex.style.marginBottom = '0%';
+                    currentUvIndex.style.marginRight = '10px';
+
+                } else if (currentUvIndex.textContent < 6){
+                    currentUviBox.style.display = 'inline-block';
+                    currentUviBox.style.backgroundColor = 'yellow';
+                } else {
+                    currentUviBox.style.display = 'inline-block';
+                    currentUviBox.style.backgroundColor = 'red';
+                }
+
                 current.appendChild(currentHeader);
                 current.appendChild(currentTemp);
                 current.appendChild(currentHumid);
                 current.appendChild(currentWind);
                 current.appendChild(currentUvi);
+                currentUvi.appendChild(currentUviBox);
+                currentUviBox.appendChild(currentUvIndex);
                 currentHeader.appendChild(iconImg);
 
                 var forecast = document.getElementById('forecast');
@@ -72,7 +95,7 @@ function displayWeather(data, searchInput){
                     var forecastHumid = document.createElement('p');
                     var forecastWind = document.createElement('p');
                     var forecastUvi = document.createElement('p');
-                    var forecastDate = document.createElement('h4');
+                    var forecastDate = document.createElement('h4'); 
     
                     // create forcast data    
                     forecastTemp.textContent = 'Temp: ' + data.daily[i].temp.day;
@@ -94,6 +117,8 @@ function displayWeather(data, searchInput){
                     forecastDiv.appendChild(forecastHumid);
                     forecastDiv.appendChild(forecastWind);
                     forecastDiv.appendChild(forecastUvi);
+
+                    forecastDiv.setAttribute('class', 'col')
                 }
 }
 
@@ -101,25 +126,23 @@ function displayWeather(data, searchInput){
 $('#search-btn').on('click', function(event){
     event.preventDefault();
     searchInput = $('#city').val();
-
+    document.getElementById('weather').style.display = 'block';
     createQuickSearch(searchInput);
     findCity(searchInput);
 
 });
 
-var idCounter = 0;
 function createQuickSearch(searchInput){
-
     var quickSearch = document.getElementById('quick-search');
     var addCity = document.createElement('button');
+    addCity.textContent = searchInput;
+    quickSearch.appendChild(addCity);
+
     if (addCity){
+        cities.push(addCity);
         idCounter++;
         addCity.setAttribute('id', idCounter)
     }
-
-    addCity.textContent = searchInput;
-    quickSearch.appendChild(addCity);
-    localStorage.setItem('city', addCity)
     var getIdCounter = document.getElementById(idCounter);
     getIdCounter.addEventListener('click', function(event){
         event.preventDefault();

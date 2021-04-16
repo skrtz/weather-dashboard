@@ -19,6 +19,7 @@ aside {
 }
 
 #weather {
+    display: none;
     width: 60%;
     height: 550px;
 }
@@ -29,8 +30,10 @@ aside {
     height: 275px;
     margin: 50px;
     margin-left: 0%;
+    margin-bottom: 2%;
     text-indent: 10px;
     line-height: 2.5;
+    background-color: #e1e4e8;
 }
 #current h2{
     margin-top: 5px;
@@ -45,10 +48,10 @@ aside {
 
 #forecast {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin-top: 25px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
     margin-right: 50px;
     margin-left: 0%;
     width: 90%;
