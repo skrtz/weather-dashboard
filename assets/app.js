@@ -71,9 +71,15 @@ function displayWeather(data, searchInput){
                 } else if (currentUvIndex.textContent < 6){
                     currentUviBox.style.display = 'inline-block';
                     currentUviBox.style.backgroundColor = 'yellow';
+                    currentUviBox.style.borderRadius = '10px';
+                    currentUvIndex.style.marginBottom = '0%';
+                    currentUvIndex.style.marginRight = '10px';
                 } else {
                     currentUviBox.style.display = 'inline-block';
                     currentUviBox.style.backgroundColor = 'red';
+                    currentUviBox.style.borderRadius = '10px';
+                    currentUvIndex.style.marginBottom = '0%';
+                    currentUvIndex.style.marginRight = '10px';
                 }
 
                 current.appendChild(currentHeader);
@@ -118,7 +124,7 @@ function displayWeather(data, searchInput){
                     forecastDiv.appendChild(forecastWind);
                     forecastDiv.appendChild(forecastUvi);
 
-                    forecastDiv.setAttribute('class', 'col')
+                    forecastDiv.setAttribute('class', 'col');
                 }
 }
 
@@ -133,13 +139,18 @@ $('#search-btn').on('click', function(event){
 });
 
 function createQuickSearch(searchInput){
+    for(let i = 0; i < cities.length; i++){
+        if (searchInput === cities[i]){
+            findCity(searchInput);
+            return;
+        }
+    }
     var quickSearch = document.getElementById('quick-search');
     var addCity = document.createElement('button');
     addCity.textContent = searchInput;
     quickSearch.appendChild(addCity);
-
     if (addCity){
-        cities.push(addCity);
+        cities.push(addCity.textContent);
         idCounter++;
         addCity.setAttribute('id', idCounter)
     }
