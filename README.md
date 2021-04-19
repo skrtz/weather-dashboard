@@ -7,6 +7,8 @@ This application displays current and forcast weather for a specified region by 
 ## Tech Used
 HTML
 CSS
+Primer
 Javascript
+Moment JS
 Jquery
 Open Weather API
