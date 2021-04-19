@@ -12,3 +12,7 @@ Javascript
 Moment JS
 Jquery
 Open Weather API
+
+## Screenshot
+
+* [Screenshot](./assets/Weather-Dashboard.gif)
