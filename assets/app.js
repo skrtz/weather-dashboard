@@ -5,6 +5,10 @@ var apiKey = 'f1a95fc68a0873c27d61c20f9a6dd653';
 var lat;
 var lon;
 var date = moment().format("MM/DD/YYYY");
+var savedCities = JSON.parse(localStorage.getItem('cities'));
+
+function init(){
+
 
 
 // get city coordinates
@@ -36,6 +40,7 @@ function getWeather(lat, lon, searchInput) {
 // display data html 
 function displayWeather(data, searchInput){
                 // create current weather section
+                console.log('hi')
                 var current = document.getElementById('current');
                 current.innerHTML = '';
 
@@ -128,6 +133,13 @@ function displayWeather(data, searchInput){
                 }
 }
 
+for (let i = 0; i < savedCities.length; i++){
+    city = savedCities[i];
+    createQuickSearch(city)
+    findCity(city);
+
+}
+
 // search input and button
 $('#search-btn').on('click', function(event){
     event.preventDefault();
@@ -138,6 +150,7 @@ $('#search-btn').on('click', function(event){
 
 });
 
+// quick search buttons
 function createQuickSearch(searchInput){
     for(let i = 0; i < cities.length; i++){
         if (searchInput === cities[i]){
@@ -150,16 +163,18 @@ function createQuickSearch(searchInput){
     addCity.textContent = searchInput;
     quickSearch.appendChild(addCity);
     if (addCity){
-        cities.push(addCity.textContent);
         idCounter++;
-        addCity.setAttribute('id', idCounter)
+        addCity.setAttribute('id', idCounter);
+        cities.push(addCity.textContent);
+        localStorage.setItem('cities', JSON.stringify(cities));
     }
     var getIdCounter = document.getElementById(idCounter);
     getIdCounter.addEventListener('click', function(event){
         event.preventDefault();
         searchInput = this.textContent;
         findCity(searchInput);
-    })
-        
+    })      
 }
 
+}
+init();
