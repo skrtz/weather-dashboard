@@ -133,11 +133,19 @@ function displayWeather(data, searchInput){
                 }
 }
 
-for (let i = 0; i < savedCities.length; i++){
-    city = savedCities[i];
-    createQuickSearch(city);
-    // findCity(city);
+function render(){
+    for (let i = 0; i < savedCities.length; i++){
+        city = savedCities[i];
+        createQuickSearch(city);
+        // findCity(city);
+    }
 }
+
+// for (let i = 0; i < savedCities.length; i++){
+//     city = savedCities[i];
+//     createQuickSearch(city);
+//     // findCity(city);
+// }
 
 // search input and button
 $('#search-btn').on('click', function(event){
@@ -174,6 +182,6 @@ function createQuickSearch(searchInput){
         findCity(searchInput);
     })      
 }
-
+render();
 }
 init();
