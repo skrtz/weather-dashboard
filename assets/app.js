@@ -2,6 +2,7 @@ var cities = [];
 var searchInput;
 var idCounter = 0;
 var apiKey = 'f1a95fc68a0873c27d61c20f9a6dd653';
+// var apiKey = 'add5dcf52ad731b8b727d48e825d9251';
 var lat;
 var lon;
 var date = moment().format("MM/DD/YYYY");
@@ -40,7 +41,6 @@ function getWeather(lat, lon, searchInput) {
 // display data html 
 function displayWeather(data, searchInput){
                 // create current weather section
-                console.log('hi')
                 var current = document.getElementById('current');
                 current.innerHTML = '';
 
@@ -135,9 +135,8 @@ function displayWeather(data, searchInput){
 
 for (let i = 0; i < savedCities.length; i++){
     city = savedCities[i];
-    createQuickSearch(city)
-    findCity(city);
-
+    createQuickSearch(city);
+    // findCity(city);
 }
 
 // search input and button
