@@ -40,6 +40,8 @@ function getWeather(lat, lon, searchInput) {
 
 // display data html 
 function displayWeather(data, searchInput){
+                document.getElementById('weather').style.display = 'block';
+                console.log(searchInput)
                 // create current weather section
                 var current = document.getElementById('current');
                 current.innerHTML = '';
@@ -137,21 +139,13 @@ function render(){
     for (let i = 0; i < savedCities.length; i++){
         city = savedCities[i];
         createQuickSearch(city);
-        // findCity(city);
     }
 }
-
-// for (let i = 0; i < savedCities.length; i++){
-//     city = savedCities[i];
-//     createQuickSearch(city);
-//     // findCity(city);
-// }
 
 // search input and button
 $('#search-btn').on('click', function(event){
     event.preventDefault();
     searchInput = $('#city').val();
-    document.getElementById('weather').style.display = 'block';
     createQuickSearch(searchInput);
     findCity(searchInput);
 
