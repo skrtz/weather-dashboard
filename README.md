@@ -5,13 +5,13 @@ This application displays current and forcast weather for a specified region by 
 [Weather Dashboard](https://skrtz.github.io/weather-dashboard/)
 
 ## Tech Used
-HTML
-CSS
-Primer
-Javascript
-Moment JS
-Jquery
-Open Weather API
+- HTML  
+- CSS  
+- Primer  
+- Javascript  
+- Moment JS  
+- Jquery  
+- Open Weather API  
 
 ## Screenshot
 
